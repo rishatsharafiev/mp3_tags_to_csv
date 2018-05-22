@@ -1,0 +1,23 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+cython = "==0.25.2"
+pygame = "==1.9.*"
+kivy = "==1.10.*"
+pillow = "==5.1.*"
+mutagen = "==1.40.*"
+
+
+[dev-packages]
+
+
+
+[requires]
+
+python_version = "3.6"
