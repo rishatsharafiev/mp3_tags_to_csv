@@ -95,6 +95,7 @@ class MainApp(App):
     def build(self):
         # load kv file with utf-8
         kv_filename = 'main.kv'
+        Builder.unload_file(kv_filename)
         with open(kv_filename, encoding='utf8') as f:
             Builder.load_string(f.read(), rulesonly=True)
         return Root()
