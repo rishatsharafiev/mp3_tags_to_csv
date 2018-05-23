@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
-
 import kivy
 kivy.require('1.10.0')
 
+from kivy.lang import Builder
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
 from kivy.factory import Factory
@@ -12,6 +11,11 @@ from kivy.uix.popup import Popup
 import os
 import mutagen
 import csv
+
+# load kv file with utf-8
+kv_filename = 'main.kv'
+with open(kv_filename, encoding='utf8') as f:
+    Builder.load_string(f.read())
 
 class LoadDialog(FloatLayout):
     load = ObjectProperty(None)
