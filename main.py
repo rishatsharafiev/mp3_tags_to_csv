@@ -36,13 +36,13 @@ class Root(FloatLayout):
 
     def show_load(self):
         content = LoadDialog(load=self.load, cancel=self.dismiss_popup)
-        self._popup = Popup(title='Load file', content=content,
+        self._popup = Popup(title='Выбрать директорию с музыкой', content=content,
                             size_hint=(0.9, 0.9))
         self._popup.open()
 
     def show_save(self):
         content = SaveDialog(save=self.save, cancel=self.dismiss_popup)
-        self._popup = Popup(title='Save file', content=content,
+        self._popup = Popup(title='Выбрать директорию для сохранения выгрузки', content=content,
                             size_hint=(0.9, 0.9))
         self._popup.open()
 
@@ -67,7 +67,7 @@ class Root(FloatLayout):
         metadata = [m for m in metadata if m.get('metadata')]
 
         with open(write_filename, 'w', encoding='utf-8') as write_file:
-            csv_writer = csv.writer(write_file, delimiter=';', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            csv_writer = csv.writer(write_file, delimiter=';', quotechar='|', quoting=csv.QUOTE_MINIMAL, lineterminator='\n')
             col_names = ['Имя файла', 'Название', 'Исполнитель', 'Жанр', 'Альбом', 'Композитор', 'Комментарий']
             csv_writer.writerow([i.encode('utf8').decode('utf8') for i in col_names])
 
@@ -81,7 +81,7 @@ class Root(FloatLayout):
                 composer = meta.get('TCOM', '')
                 comment = meta.get('COMM::rus', '')
 
-                csv_writer.writerow([filename, name, singer, genre, album, composer, comment], lineterminator='\n')
+                csv_writer.writerow([filename, name, singer, genre, album, composer, comment])
 
         self.dismiss_popup()
 
