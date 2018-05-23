@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import kivy
 kivy.require('1.10.0')
 
@@ -12,10 +14,6 @@ import os
 import mutagen
 import csv
 
-# load kv file with utf-8
-kv_filename = 'main.kv'
-with open(kv_filename, encoding='utf8') as f:
-    Builder.load_string(f.read())
 
 class LoadDialog(FloatLayout):
     load = ObjectProperty(None)
@@ -95,6 +93,10 @@ class MainApp(App):
     title = 'Информация о музыке'
 
     def build(self):
+        # load kv file with utf-8
+        kv_filename = 'main.kv'
+        with open(kv_filename, encoding='utf8') as f:
+            Builder.load_string(f.read(), rulesonly=True)
         return Root()
 
 Factory.register('Root', cls=Root)
