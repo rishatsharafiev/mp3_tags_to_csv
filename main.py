@@ -36,13 +36,13 @@ class Root(FloatLayout):
 
     def show_load(self):
         content = LoadDialog(load=self.load, cancel=self.dismiss_popup)
-        self._popup = Popup(title="Load file", content=content,
+        self._popup = Popup(title='Load file', content=content,
                             size_hint=(0.9, 0.9))
         self._popup.open()
 
     def show_save(self):
         content = SaveDialog(save=self.save, cancel=self.dismiss_popup)
-        self._popup = Popup(title="Save file", content=content,
+        self._popup = Popup(title='Save file', content=content,
                             size_hint=(0.9, 0.9))
         self._popup.open()
 
@@ -81,7 +81,7 @@ class Root(FloatLayout):
                 composer = meta.get('TCOM', '')
                 comment = meta.get('COMM::rus', '')
 
-                csv_writer.writerow([filename, name, singer, genre, album, composer, comment])
+                csv_writer.writerow([filename, name, singer, genre, album, composer, comment], lineterminator='\n')
 
         self.dismiss_popup()
 
