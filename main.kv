@@ -4,17 +4,17 @@
     BoxLayout:
         orientation: 'vertical'
         Button:
-            text: 'Load'
+            text: 'Выбрать директорию с музыкой'
             on_release: root.show_load()
         Button:
-            text: 'Save'
+            text: 'Выбрать директорию для сохранения выгрузки'
             on_release: root.show_save()
 
 <LoadDialog>:
     BoxLayout:
         size: root.size
         pos: root.pos
-        orientation: "vertical"
+        orientation: 'vertical'
         FileChooserListView:
             id: filechooser
 
@@ -22,11 +22,11 @@
             size_hint_y: None
             height: 30
             Button:
-                text: "Cancel"
+                text: 'Отмена'
                 on_release: root.cancel()
 
             Button:
-                text: "Load"
+                text: 'Применить'
                 on_release: root.load(filechooser.path, filechooser.selection)
 
 <SaveDialog>:
@@ -34,7 +34,7 @@
     BoxLayout:
         size: root.size
         pos: root.pos
-        orientation: "vertical"
+        orientation: 'vertical'
         FileChooserListView:
             id: filechooser
             on_selection: text_input.text = self.selection and self.selection[0] or ''
@@ -49,9 +49,9 @@
             size_hint_y: None
             height: 30
             Button:
-                text: "Cancel"
+                text: 'Отмена'
                 on_release: root.cancel()
 
             Button:
-                text: "Save"
+                text: 'Применить'
                 on_release: root.save(filechooser.path, text_input.text)
